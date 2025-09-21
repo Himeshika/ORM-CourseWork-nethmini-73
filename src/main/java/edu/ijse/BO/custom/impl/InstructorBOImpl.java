@@ -8,7 +8,7 @@ import edu.ijse.dto.InstructorDto;
 import edu.ijse.entity.Availability_instructor;
 import edu.ijse.entity.Instructor;
 import edu.ijse.exception.DuplicateEntryException;
-import edu.ijse.util.RegExChecker;
+import edu.ijse.util.RegEXUtil;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -21,10 +21,10 @@ public class InstructorBOImpl implements InstructorBO {
     @Override
     public boolean saveInstructor(InstructorDto dto) {
 
-        if(!RegExChecker.isValidName(dto.getInstructorName())){
+        if(!RegEXUtil.isValidName(dto.getInstructorName())){
             throw new IllegalArgumentException("invalid instructor name");
         }
-        if (!RegExChecker.isValidEmail(dto.getInstructorEmail())) {
+        if (!RegEXUtil.isValidEmail(dto.getInstructorEmail())) {
             throw new IllegalArgumentException("Invalid instructor email");
         }
         Session session= FactoryConfiguration.getInstance().getCurrentSession();
@@ -53,10 +53,10 @@ public class InstructorBOImpl implements InstructorBO {
     @Override
     public boolean updateInstructor(InstructorDto dto) {
 
-        if(!RegExChecker.isValidName(dto.getInstructorName())){
+        if(!RegEXUtil.isValidName(dto.getInstructorName())){
             throw new IllegalArgumentException("Invalid instructor name");
         }
-        if (!RegExChecker.isValidEmail(dto.getInstructorEmail())) {
+        if (!RegEXUtil.isValidEmail(dto.getInstructorEmail())) {
             throw new IllegalArgumentException("Invalid instructor email");
         }
 

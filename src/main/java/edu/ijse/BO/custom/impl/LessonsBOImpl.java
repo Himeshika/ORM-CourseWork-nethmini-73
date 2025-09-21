@@ -11,7 +11,7 @@ import edu.ijse.dto.LessonDto;
 import edu.ijse.entity.*;
 import edu.ijse.exception.IllegalArgumentException;
 import edu.ijse.exception.InvalidInstructorException;
-import edu.ijse.util.RegExChecker;
+import edu.ijse.util.RegEXUtil;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -27,7 +27,7 @@ public class LessonsBOImpl implements LessonsBO {
     @Override
     public boolean saveLesson(int studentID, int instructorID,int courseID, LessonDto lessonDto) {// save lesson tx
 
-        if(!RegExChecker.isLessonNameValid(lessonDto.getLessonName())){
+        if(!RegEXUtil.isLessonNameValid(lessonDto.getLessonName())){
             throw new IllegalArgumentException("invalid lesson name");
         }
         Session session= FactoryConfiguration.getInstance().getCurrentSession();
@@ -87,7 +87,7 @@ public class LessonsBOImpl implements LessonsBO {
 
     @Override
     public boolean updateLesson(int studentID, int instructorID,int courseID, LessonDto dto) {
-        if (!RegExChecker.isLessonNameValid(dto.getLessonName())) {
+        if (!RegEXUtil.isLessonNameValid(dto.getLessonName())) {
             throw new IllegalArgumentException("Invalid lesson name");
         }
 

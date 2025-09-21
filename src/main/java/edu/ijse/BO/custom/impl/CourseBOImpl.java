@@ -10,7 +10,7 @@ import edu.ijse.dto.InstructorDto;
 import edu.ijse.entity.Course;
 import edu.ijse.entity.Instructor;
 import edu.ijse.exception.DuplicateEntryException;
-import edu.ijse.util.RegExChecker;
+import edu.ijse.util.RegEXUtil;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -27,11 +27,11 @@ public class CourseBOImpl implements CourseBO {
     @Override
     public boolean saveCourse(CourseDto dto, List<InstructorDto> instructorDtos) {
 
-        if (!RegExChecker.isValidCourseName(dto.getCourseName())) {
+        if (!RegEXUtil.isValidCourseName(dto.getCourseName())) {
             throw new IllegalArgumentException("Invalid course name!");
         }
 
-        if (!RegExChecker.isValidDuration(dto.getDuration())) {
+        if (!RegEXUtil.isValidDuration(dto.getDuration())) {
             throw new IllegalArgumentException("Invalid duration format!");
         }
 
@@ -73,11 +73,11 @@ public class CourseBOImpl implements CourseBO {
 
     @Override
     public boolean updateCourse(CourseDto dto) {
-        if (!RegExChecker.isValidCourseName(dto.getCourseName())) {
+        if (!RegEXUtil.isValidCourseName(dto.getCourseName())) {
             throw new IllegalArgumentException("Invalid course name!");
         }
 
-        if (!RegExChecker.isValidDuration(dto.getDuration())) {
+        if (!RegEXUtil.isValidDuration(dto.getDuration())) {
             throw new IllegalArgumentException("Invalid duration format!");
         }
 
