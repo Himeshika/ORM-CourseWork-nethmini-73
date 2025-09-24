@@ -25,7 +25,7 @@ import java.time.LocalTime;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class LessonManagementPageController implements Initializable,SuperController {
+public class LessonManagementPageController implements Initializable {
 
     @FXML
     private AnchorPane apLessonPage;
@@ -94,7 +94,6 @@ public class LessonManagementPageController implements Initializable,SuperContro
 
     private ObservableList<LessonsTM> lessonTMS = FXCollections.observableArrayList();
 
-    private UserDto logedUser;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -117,9 +116,6 @@ public class LessonManagementPageController implements Initializable,SuperContro
         btnUpdateLesson.setDisable(true);
     }
 
-    public void setUser(UserDto loggedUser) {
-        this.logedUser = loggedUser;
-    }
 
     private void loadStudents() {
         try {
@@ -316,15 +312,15 @@ public class LessonManagementPageController implements Initializable,SuperContro
     }
 
     public void btnGoBack(ActionEvent actionEvent) {
-        try {
-            apLessonPage.getChildren().clear();
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/Dashboard.fxml"));
-            AnchorPane page = (AnchorPane) loader.load();
-            DashboardManagementPage controller = (DashboardManagementPage) loader.getController();
-            controller.setUser(logedUser);
-            apLessonPage.getChildren().add(page);
-        } catch (IOException e) {
-            AlertHelper.showError("Error loading Dashboard", e.getMessage());
-        }
+//        try {
+//            apLessonPage.getChildren().clear();
+//            FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/Dashboard.fxml"));
+//            AnchorPane page = (AnchorPane) loader.load();
+//            DashboardManagementPage controller = (DashboardManagementPage) loader.getController();
+//            controller.setUser(logedUser);
+//            apLessonPage.getChildren().add(page);
+//        } catch (IOException e) {
+//            AlertHelper.showError("Error loading Dashboard", e.getMessage());
+//        }
     }
 }

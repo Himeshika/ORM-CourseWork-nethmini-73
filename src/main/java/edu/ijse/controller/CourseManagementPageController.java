@@ -27,9 +27,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class CourseManagementPageController implements Initializable,SuperController {
+public class CourseManagementPageController implements Initializable{
 
-    private UserDto logedUser;
+
 
     @FXML
     private AnchorPane apCoursePage;
@@ -70,9 +70,6 @@ public class CourseManagementPageController implements Initializable,SuperContro
         btnUpdateCourse.setDisable(true);
     }
 
-    public void setUser(UserDto logedUser) {
-        this.logedUser = logedUser;
-    }
 
     private void setupTable() {
         colCourseID.setCellValueFactory(new PropertyValueFactory<>("courseID"));
@@ -225,16 +222,16 @@ public class CourseManagementPageController implements Initializable,SuperContro
 
     @FXML
     void btnGoBack(ActionEvent event) {
-        try {
-            apCoursePage.getChildren().clear();
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/Dashboard.fxml"));
-            AnchorPane page = (AnchorPane) loader.load();
-            DashboardManagementPage controller = (DashboardManagementPage) loader.getController();
-            controller.setUser(logedUser);
-            apCoursePage.getChildren().add(page);
-        } catch (IOException e) {
-            AlertHelper.showError("Error loading Dashboard", e.getMessage());
-        }
+//        try {
+//            apCoursePage.getChildren().clear();
+//            FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/Dashboard.fxml"));
+//            AnchorPane page = (AnchorPane) loader.load();
+//            DashboardManagementPage controller = (DashboardManagementPage) loader.getController();
+//            controller.setUser(logedUser);
+//            apCoursePage.getChildren().add(page);
+//        } catch (IOException e) {
+//            AlertHelper.showError("Error loading Dashboard", e.getMessage());
+//        }
     }
 
 
@@ -260,5 +257,8 @@ public class CourseManagementPageController implements Initializable,SuperContro
             btnDeleteCourse.setDisable(false);
             btnUpdateCourse.setDisable(false);
         }
+    }
+
+    public void btnClearOnAction(ActionEvent actionEvent) {
     }
 }

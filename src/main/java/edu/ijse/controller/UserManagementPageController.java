@@ -20,9 +20,8 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class UserManagementPageController implements Initializable,SuperController {
+public class UserManagementPageController implements Initializable{
 
-    private UserDto logedUser;
 
     @FXML
     private AnchorPane apUserPage;
@@ -70,9 +69,6 @@ public class UserManagementPageController implements Initializable,SuperControll
         loadUsers();
     }
 
-    public void setUser(UserDto loggedUser) {
-        this.logedUser = loggedUser;
-    }
 
     private void setupTable() {
         btnDeleteUser.setDisable(true);
@@ -193,16 +189,16 @@ public class UserManagementPageController implements Initializable,SuperControll
 
     @FXML
     void btnGoBack(ActionEvent event) {
-        try {
-            apUserPage.getChildren().clear();
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/Dashboard.fxml"));
-            AnchorPane page = (AnchorPane) loader.load();
-            DashboardManagementPage controller = (DashboardManagementPage) loader.getController();
-            controller.setUser(logedUser);
-            apUserPage.getChildren().add(page);
-        } catch (IOException e) {
-            AlertHelper.showError("Error loading Dashboard", e.getMessage());
-        }
+//        try {
+//            apUserPage.getChildren().clear();
+//            FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/Dashboard.fxml"));
+//            AnchorPane page = (AnchorPane) loader.load();
+//            DashboardManagementPage controller = (DashboardManagementPage) loader.getController();
+//            controller.setUser(logedUser);
+//            apUserPage.getChildren().add(page);
+//        } catch (IOException e) {
+//            AlertHelper.showError("Error loading Dashboard", e.getMessage());
+//        }
 
     }
 

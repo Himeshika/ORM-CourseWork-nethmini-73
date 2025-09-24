@@ -83,50 +83,45 @@ public class DashboardManagementPage implements Initializable {
 
     @FXML
     void handleLogout(ActionEvent event) {
-        setPages("/View/LoginPage.fxml",logedUser);
+        setPages("/View/LoginPage.fxml");
     }
 
     @FXML
     void openCoursePage(ActionEvent event) {
-        setPages("/View/CourseManagementPage.fxml",logedUser);
+        setPages("/View/CoursePage.fxml");
     }
 
     @FXML
     void openInstructorPage(ActionEvent event) {
-        setPages("/View/InstructorManagementPage.fxml",logedUser);
+        setPages("/View/InstructorPage.fxml");
     }
 
     @FXML
     void openLessonPage(ActionEvent event) {
-        setPages("/View/LessonManagementPage.fxml",logedUser);
+        setPages("/View/LessonPage.fxml");
     }
 
     @FXML
     void openPaymentPage(ActionEvent event) {
-        setPages("/View/PaymentManagementPage.fxml",logedUser);
+        setPages("/View/PaymentPage.fxml");
     }
 
     @FXML
     void openStudentPage(ActionEvent event) {
-        setPages("/View/StudentManagemnetPage.fxml",logedUser);
+        setPages("/View/StudentPage.fxml");
     }
 
     @FXML
     void openUserPage(ActionEvent event) {
-        setPages("/View/UserManagementPage.fxml",logedUser);
+        setPages("/View/userpage.fxml");
     }
 
-    public void setPages(String path,UserDto loggedUser){
+    public void setPages(String path){
         try {
-            dashboardRoot.getChildren().clear();
+            apDB.getChildren().clear();
             FXMLLoader loader = new FXMLLoader(getClass().getResource(path));
             AnchorPane page = (AnchorPane) loader.load();
-            Object controller = loader.getController();
-            if (controller instanceof SuperController) {
-                ((SuperController) controller).setUser(loggedUser);
-            }
-
-            dashboardRoot.getChildren().add(page);
+            apDB.getChildren().add(page);
 
         }catch (Exception e){
             AlertHelper.showError("Error",e.getMessage());

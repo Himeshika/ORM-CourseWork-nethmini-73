@@ -27,7 +27,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class StudentManagementPageController implements Initializable,SuperController {
+public class StudentManagementPageController implements Initializable{
 
     public Button btnACoursesID;
     public TextField txtPaymentAmount;
@@ -39,7 +39,6 @@ public class StudentManagementPageController implements Initializable,SuperContr
     private ObservableList<StudentTM> studentTMS = FXCollections.observableArrayList();
     private List<CourseDto> courses = new ArrayList<>();
 
-    private UserDto logedUser;
 
     @FXML
     private AnchorPane apMainSide;
@@ -104,9 +103,6 @@ public class StudentManagementPageController implements Initializable,SuperContr
     @FXML
     private TextField txtName;
 
-    public void setUser(UserDto loggedUser) {
-        this.logedUser = loggedUser;
-    }
 
     @FXML
     void btnDelete(ActionEvent event) {
@@ -132,16 +128,16 @@ public class StudentManagementPageController implements Initializable,SuperContr
 
     @FXML
     void btnGoBack(ActionEvent event) {
-        try {
-            apStudentPage.getChildren().clear();
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/Dashboard.fxml"));
-            AnchorPane page = (AnchorPane) loader.load();
-            DashboardManagementPage controller = (DashboardManagementPage) loader.getController();
-            controller.setUser(logedUser);
-            apStudentPage.getChildren().add(page);
-        } catch (IOException e) {
-            AlertHelper.showError("Error loading Dashboard", e.getMessage());
-        }
+//        try {
+//            apStudentPage.getChildren().clear();
+//            FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/Dashboard.fxml"));
+//            AnchorPane page = (AnchorPane) loader.load();
+//            DashboardManagementPage controller = (DashboardManagementPage) loader.getController();
+//            controller.setUser(logedUser);
+//            apStudentPage.getChildren().add(page);
+//        } catch (IOException e) {
+//            AlertHelper.showError("Error loading Dashboard", e.getMessage());
+//        }
 
     }
 

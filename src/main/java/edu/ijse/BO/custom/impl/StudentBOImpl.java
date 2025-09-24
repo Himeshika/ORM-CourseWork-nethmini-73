@@ -291,9 +291,5 @@ public class StudentBOImpl implements StudentBO {
         return studentDto;
     }
 
-    @Override
-    public int getStudentProgressByEmail(String email) {
-        return studentDAO.getStudentProgress(email);
-    }
 
 }

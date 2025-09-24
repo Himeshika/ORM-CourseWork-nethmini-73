@@ -2,7 +2,7 @@ package edu.ijse.util;
 
 import java.util.regex.Pattern;
 
-public class RegEXUtil {
+public class RegExChecker {
 
     // Email must contain @ and domain with at least 2 letters
     public static String emailReg = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$";

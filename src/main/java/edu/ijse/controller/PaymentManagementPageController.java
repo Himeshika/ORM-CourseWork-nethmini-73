@@ -27,7 +27,7 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class PaymentManagementPageController implements Initializable,SuperController{
+public class PaymentManagementPageController implements Initializable{
 
     public TextField stNameTxt;
     public ComboBox<String> cmbPaymentType;
@@ -66,7 +66,6 @@ public class PaymentManagementPageController implements Initializable,SuperContr
 
     private ObservableList<PaymentTM> paymentTMS = FXCollections.observableArrayList();
 
-    private UserDto logedUser;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -106,9 +105,6 @@ public class PaymentManagementPageController implements Initializable,SuperContr
         });
     }
 
-    public void setUser(UserDto loggedUser) {
-        this.logedUser = loggedUser;
-    }
 
     private void setupPaymentTypeCombo(){
         cmbPaymentType.setItems(FXCollections.observableArrayList("Card","Cash","Online"));
@@ -230,16 +226,16 @@ public class PaymentManagementPageController implements Initializable,SuperContr
 
     @FXML
     void btnGoBack(ActionEvent event) {
-        try {
-            apPaymentPage.getChildren().clear();
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/Dashboard.fxml"));
-            AnchorPane page = (AnchorPane) loader.load();
-            DashboardManagementPage controller = (DashboardManagementPage) loader.getController();
-            controller.setUser(logedUser);
-            apPaymentPage.getChildren().add(page);
-        } catch (IOException e) {
-            AlertHelper.showError("Error loading Dashboard", e.getMessage());
-        }
+//        try {
+//            apPaymentPage.getChildren().clear();
+//            FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/Dashboard.fxml"));
+//            AnchorPane page = (AnchorPane) loader.load();
+//            DashboardManagementPage controller = (DashboardManagementPage) loader.getController();
+//            controller.setUser(logedUser);
+//            apPaymentPage.getChildren().add(page);
+//        } catch (IOException e) {
+//            AlertHelper.showError("Error loading Dashboard", e.getMessage());
+//        }
 
     }
 

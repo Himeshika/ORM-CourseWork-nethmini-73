@@ -10,7 +10,7 @@ import edu.ijse.dto.InstructorDto;
 import edu.ijse.entity.Course;
 import edu.ijse.entity.Instructor;
 import edu.ijse.exception.DuplicateEntryException;
-import edu.ijse.util.RegEXUtil;
+import edu.ijse.util.RegExChecker;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -27,11 +27,11 @@ public class CourseBOImpl implements CourseBO {
     @Override
     public boolean saveCourse(CourseDto dto, List<InstructorDto> instructorDtos) {
 
-        if (!RegEXUtil.isValidCourseName(dto.getCourseName())) {
+        if (!RegExChecker.isValidCourseName(dto.getCourseName())) {
             throw new IllegalArgumentException("Invalid course name!");
         }
 
-        if (!RegEXUtil.isValidDuration(dto.getDuration())) {
+        if (!RegExChecker.isValidDuration(dto.getDuration())) {
             throw new IllegalArgumentException("Invalid duration format!");
         }
 
@@ -73,11 +73,11 @@ public class CourseBOImpl implements CourseBO {
 
     @Override
     public boolean updateCourse(CourseDto dto) {
-        if (!RegEXUtil.isValidCourseName(dto.getCourseName())) {
+        if (!RegExChecker.isValidCourseName(dto.getCourseName())) {
             throw new IllegalArgumentException("Invalid course name!");
         }
 
-        if (!RegEXUtil.isValidDuration(dto.getDuration())) {
+        if (!RegExChecker.isValidDuration(dto.getDuration())) {
             throw new IllegalArgumentException("Invalid duration format!");
         }
 
@@ -163,9 +163,5 @@ public class CourseBOImpl implements CourseBO {
         return dtoList;
     }
 
-    @Override
-    public List<Object[]> loadModulePieChart() {
-        return courseDAO.getStudentCountPerCourse();
-    }
 
 }

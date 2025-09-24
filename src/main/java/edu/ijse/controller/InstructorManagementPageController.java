@@ -21,9 +21,9 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class InstructorManagementPageController implements Initializable,SuperController {
+public class InstructorManagementPageController implements Initializable{
 
-    private UserDto logedUser;
+
     @FXML
     private AnchorPane apInstructorPage;
 
@@ -66,9 +66,6 @@ public class InstructorManagementPageController implements Initializable,SuperCo
 
     }
 
-    public void setUser(UserDto loggedUser) {
-        this.logedUser = loggedUser;
-    }
 
     private void setupTable() {
         colInstructorID.setCellValueFactory(new PropertyValueFactory<>("instructorID"));
@@ -208,16 +205,16 @@ public class InstructorManagementPageController implements Initializable,SuperCo
 
     @FXML
     void btnGoBack(ActionEvent event) {
-        try {
-            apInstructorPage.getChildren().clear();
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/Dashboard.fxml"));
-            AnchorPane page = (AnchorPane) loader.load();
-            DashboardManagementPage controller = (DashboardManagementPage) loader.getController();
-            controller.setUser(logedUser);
-            apInstructorPage.getChildren().add(page);
-        } catch (IOException e) {
-            AlertHelper.showError("Error loading Dashboard", e.getMessage());
-        }
+//        try {
+//            apInstructorPage.getChildren().clear();
+//            FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/Dashboard.fxml"));
+//            AnchorPane page = (AnchorPane) loader.load();
+//            DashboardManagementPage controller = (DashboardManagementPage) loader.getController();
+//            controller.setUser(logedUser);
+//            apInstructorPage.getChildren().add(page);
+//        } catch (IOException e) {
+//            AlertHelper.showError("Error loading Dashboard", e.getMessage());
+//        }
 
     }
 
