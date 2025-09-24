@@ -7,7 +7,7 @@ import edu.ijse.dto.CourseDto;
 import edu.ijse.dto.InstructorDto;
 import edu.ijse.dto.UserDto;
 import edu.ijse.tm.CourseTM;
-import edu.ijse.util.NotificationUtil;
+import edu.ijse.util.AlertHelper;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -107,7 +107,7 @@ public class CourseManagementPageController implements Initializable,SuperContro
             List<InstructorDto> instructors = instructorBO.getAllInstructors();
             comboInstructor.setItems(FXCollections.observableArrayList(instructors));
         } catch (Exception e) {
-            NotificationUtil.showError("Error loading instructors", e.getMessage());
+            AlertHelper.showError("Error loading instructors", e.getMessage());
         }
     }
 
@@ -126,7 +126,7 @@ public class CourseManagementPageController implements Initializable,SuperContro
                 ));
             }
         } catch (Exception e) {
-            NotificationUtil.showError("Error loading courses", e.getMessage());
+            AlertHelper.showError("Error loading courses", e.getMessage());
         }
     }
 
@@ -135,14 +135,14 @@ public class CourseManagementPageController implements Initializable,SuperContro
         InstructorDto selected = comboInstructor.getValue();
         if (selected != null && !selectedInstructors.contains(selected)) {
             selectedInstructors.add(selected);
-            NotificationUtil.showInfo("Instructor added", selected.getInstructorName() + " added to course");
+            AlertHelper.showInfo("Instructor added", selected.getInstructorName() + " added to course");
         }
     }
 
     @FXML
     void btnSaveCourse(ActionEvent event) {
         if (selectedInstructors.isEmpty()) {
-            NotificationUtil.showError("Selection error", "Add at least one instructor");
+            AlertHelper.showError("Selection error", "Add at least one instructor");
             return;
         }
 
@@ -158,13 +158,13 @@ public class CourseManagementPageController implements Initializable,SuperContro
             dto.setInstructors(new ArrayList<>(selectedInstructors));
 
             if (courseBO.saveCourse(dto, selectedInstructors)) {
-                NotificationUtil.showInfo("Success", "Course saved successfully!");
+                AlertHelper.showInfo("Success", "Course saved successfully!");
                 loadCourses();
                 clearForm();
                 selectedInstructors.clear();
             }
         } catch (Exception e) {
-            NotificationUtil.showError("Error saving course", e.getMessage());
+            AlertHelper.showError("Error saving course", e.getMessage());
         }
     }
 
@@ -172,7 +172,7 @@ public class CourseManagementPageController implements Initializable,SuperContro
     void btnUpdateCourse(ActionEvent event) {
         CourseTM selected = tblCourses.getSelectionModel().getSelectedItem();
         if (selected == null) {
-            NotificationUtil.showError("Selection error", "Select a course first");
+            AlertHelper.showError("Selection error", "Select a course first");
             return;
         }
 

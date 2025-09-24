@@ -2,7 +2,7 @@ package edu.ijse.util;
 
 import javafx.scene.control.Alert;
 
-public class NotificationUtil {
+public class AlertHelper {
 
     // Info alert
     public static void showInfo(String title, String message) {

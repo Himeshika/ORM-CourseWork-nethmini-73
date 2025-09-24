@@ -12,6 +12,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.PieChart;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 
@@ -24,6 +25,10 @@ public class DashboardManagementPage implements Initializable {
     public TextField txtCheckEmail;
     public Button Checkbtn;
     public TextField txtResult;
+    public Label student_count;
+    public Label course_count;
+    public Label admin_count;
+    public AnchorPane apDB;
     private UserDto logedUser;
 
     @FXML
@@ -128,43 +133,11 @@ public class DashboardManagementPage implements Initializable {
         }
     }
 
-    private void loadModulePieChart() {
-        try {
-            modulePieChart.getData().clear();
 
-            List<Object[]> data = courseBO.loadModulePieChart();
-
-            for (Object[] row : data) {
-                String courseName = (String) row[0];
-                Long studentCount = (Long) row[1];
-
-                modulePieChart.getData().add(new PieChart.Data(courseName+"("+studentCount+")", studentCount));
-            }
-
-        } catch (Exception e) {
-            AlertHelper.showError("Chart Error", e.getMessage());
-        }
-    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-         loadModulePieChart();
+
     }
 
-    public void btnCheck(ActionEvent actionEvent) {
-        try {
-            String email = txtCheckEmail.getText().trim();
-            if (email.isEmpty()) {
-                AlertHelper.showWarning("Input Error", "Please enter an email.");
-                return;
-            }
-
-            int progress = studentBO.getStudentProgressByEmail(email);
-
-            txtResult.setText("Progress: " + progress );
-            txtCheckEmail.clear();
-        } catch (Exception e) {
-            AlertHelper.showError("Error", e.getMessage());
-        }
-    }
 }
