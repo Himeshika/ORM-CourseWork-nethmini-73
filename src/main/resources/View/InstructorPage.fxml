@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="apInstructorPage" prefHeight="600.0" prefWidth="1050.0" style="-fx-background-color: white;"
+            xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="edu.ijse.controller.InstructorManagementPageController">
+
+    <!-- Header -->
+    <Label layoutX="50.0" layoutY="30.0" text="Instructor Management" underline="true">
+        <font>
+            <Font name="FreeSerif Bold" size="32.0" />
+        </font>
+    </Label>
+
+    <Button fx:id="btnGoBack" layoutX="913.0" layoutY="30.0" onAction="#btnGoBack"
+            style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-size: 16px;"
+            text="Back" />
+
+    <!-- Form Section -->
+    <AnchorPane layoutX="100.0" layoutY="100.0" prefHeight="200.0" prefWidth="500.0">
+        <children>
+            <Label layoutX="30.0" layoutY="20.0" text="Instructor Name">
+                <font><Font name="Mandali" size="18.0" /></font>
+            </Label>
+            <TextField fx:id="txtInstructorName" layoutX="220.0" layoutY="20.0"
+                       prefHeight="30.0" prefWidth="230.0" style="-fx-font-size: 14px;" />
+
+            <Label layoutX="30.0" layoutY="70.0" text="Instructor Email">
+                <font><Font name="Mandali" size="18.0" /></font>
+            </Label>
+            <TextField fx:id="txtInstructorEmail" layoutX="220.0" layoutY="70.0"
+                       prefHeight="30.0" prefWidth="230.0"
+                       promptText="e.g. john@gmail.com" style="-fx-font-size: 14px;" />
+
+            <Label layoutX="30.0" layoutY="120.0" text="Availability">
+                <font><Font name="Mandali" size="18.0" /></font>
+            </Label>
+            <ComboBox fx:id="comboAvailability" layoutX="220.0" layoutY="120.0"
+                      prefHeight="30.0" prefWidth="230.0" />
+        </children>
+    </AnchorPane>
+
+    <!-- Action Buttons -->
+    <AnchorPane layoutX="700.0" layoutY="110.0" prefHeight="200.0" prefWidth="200.0">
+        <children>
+            <Button fx:id="btnSaveInstructor" layoutX="40.0" layoutY="20.0" onAction="#btnSaveInstructor"
+                    prefHeight="35.0" prefWidth="120.0"
+                    style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-size: 14px;" text="Save">
+                <graphic>
+                    <ImageView fitHeight="18.0" fitWidth="18.0" preserveRatio="true">
+                        <image><Image url="@../images/add_icon.png" /></image>
+                    </ImageView>
+                </graphic>
+            </Button>
+
+            <Button fx:id="btnUpdateInstructor" layoutX="40.0" layoutY="70.0" onAction="#btnUpdateInstructor"
+                    prefHeight="35.0" prefWidth="120.0"
+                    style="-fx-background-color: #FF9800; -fx-text-fill: white; -fx-font-size: 14px;" text="Update">
+                <graphic>
+                    <ImageView fitHeight="18.0" fitWidth="18.0" preserveRatio="true">
+                        <image><Image url="@../images/update_logo.png" /></image>
+                    </ImageView>
+                </graphic>
+            </Button>
+
+            <Button fx:id="btnDeleteInstructor" layoutX="40.0" layoutY="120.0" onAction="#btnDeleteInstructor"
+                    prefHeight="35.0" prefWidth="120.0"
+                    style="-fx-background-color: #f44336; -fx-text-fill: white; -fx-font-size: 14px;" text="Delete">
+                <graphic>
+                    <ImageView fitHeight="18.0" fitWidth="18.0" preserveRatio="true">
+                        <image><Image url="@../images/delete.png" /></image>
+                    </ImageView>
+                </graphic>
+            </Button>
+        </children>
+    </AnchorPane>
+
+    <!-- Table Section -->
+    <TableView fx:id="tblInstructors" layoutX="50.0" layoutY="330.0" prefHeight="240.0" prefWidth="950.0"
+               style="-fx-background-color: white; -fx-border-color: #bdbdbd; -fx-font-size: 14px;">
+        <columns>
+            <TableColumn fx:id="colInstructorID" prefWidth="80.0" text="ID" />
+            <TableColumn fx:id="colInstructorName" prefWidth="200.0" text="Name" />
+            <TableColumn fx:id="colInstructorEmail" prefWidth="250.0" text="Email" />
+            <TableColumn fx:id="colAvailability" prefWidth="150.0" text="Availability" />
+        </columns>
+    </TableView>
+
+</AnchorPane>
