@@ -103,7 +103,7 @@ public class LoginPageController {
 
         try {
             apLoginPage.getChildren().clear();
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/Dashboard.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/dashboard.fxml"));
             AnchorPane pane = loader.load();
             DashboardManagementPage controller=loader.getController();
             controller.setUser(user);

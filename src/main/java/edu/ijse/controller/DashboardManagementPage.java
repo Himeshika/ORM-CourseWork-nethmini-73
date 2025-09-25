@@ -82,11 +82,6 @@ public class DashboardManagementPage implements Initializable {
     }
 
     @FXML
-    void handleLogout(ActionEvent event) {
-        setPages("/View/LoginPage.fxml");
-    }
-
-    @FXML
     void openCoursePage(ActionEvent event) {
         setPages("/View/CoursePage.fxml");
     }

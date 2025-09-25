@@ -15,7 +15,7 @@ public class Main  extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        Parent loadingParent = FXMLLoader.load(getClass().getResource("/View/dashboard.fxml"));
+        Parent loadingParent = FXMLLoader.load(getClass().getResource("/View/LoginPage.fxml"));
         Scene loadingScene = new Scene(loadingParent);
 
         stage.setTitle("ttt");

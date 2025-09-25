@@ -260,5 +260,6 @@ public class CourseManagementPageController implements Initializable{
     }
 
     public void btnClearOnAction(ActionEvent actionEvent) {
+        
     }
 }
